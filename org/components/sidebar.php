@@ -21,7 +21,7 @@
                </li>
 
                <li>
-                   <a href="lydo_announcement.php">
+                   <a href="../announcement/">
                        <span class="material-symbols-sharp">Announcement</span>
                        <span>LYDO Announcement</span>
                    </a>
