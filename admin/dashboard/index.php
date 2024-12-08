@@ -11,7 +11,6 @@ include('../components/navbar.php');
 ?>
 
 <div class="main-content">
-
     <main>
         <div class="cards">
             <!-- Approved Organization Section -->
