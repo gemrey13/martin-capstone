@@ -14,7 +14,7 @@
             </li>
 
             <li>
-                <a href="pending.php">
+                <a href="../pending/">
                     <span class="material-symbols-sharp">pending_actions</span>
                     <span>Pending Req.</span>
                 </a>
