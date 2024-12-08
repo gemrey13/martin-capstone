@@ -35,7 +35,7 @@
             </li>
 
             <li>
-                <a href="announcement.php">
+                <a href="../announcement/">
                     <span class="material-symbols-sharp">Announcement</span>
                     <span>Announcement</span>
                 </a>
