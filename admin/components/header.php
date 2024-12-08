@@ -1,3 +1,18 @@
+<?php
+session_start();  
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../../auth/login/");
+    exit();
+}
+
+if ($_SESSION['role'] !== 'admin') {
+    header("Location: ../../home/");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
