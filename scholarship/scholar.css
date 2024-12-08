@@ -1,0 +1,74 @@
+.scholarship-hero {
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(21, 20, 51);
+    padding: 5rem;
+    position: relative;
+}
+
+/* Content Container */
+.scholarship-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: black;
+    padding: 20px;
+}
+
+/* Overlay */
+.scholarship-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: -1;
+    border-radius: 50px;
+
+}
+
+
+/* Logo and Text Section */
+.scholarship-logo {
+    display: flex;
+    align-items: center;
+    /* Centers the items vertically */
+    justify-content: center;
+    /* Centers the items horizontally */
+    gap: 10px;
+    /* Adds space between the logo and the text */
+}
+
+.scholarship-logo img {
+    width: 80px;
+    /* Adjust logo size */
+    height: auto;
+}
+
+.scholarship-logo h3 {
+    margin: 0;
+    color: black;
+    /* Makes sure the text is white */
+    font-size: 15px;
+}
+
+
+/* Title */
+.scholarship-content h1 {
+    color: black;
+}
+
+/* Description */
+.scholarship-content p {
+    color: black;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Button */
+.scholarship-content button {
+    margin-top: 2rem;
+}
