@@ -14,7 +14,7 @@
                </li>
 
                <li>
-                   <a href="post.php">
+                   <a href="../posts/">
                        <span class="material-symbols-sharp">post</span>
                        <span>Post</span>
                    </a>
