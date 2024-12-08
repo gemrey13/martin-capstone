@@ -42,7 +42,7 @@
             </li>
 
             <li>
-                <a href="Analytics.php">
+                <a href="../analytics/">
                     <span class="material-symbols-sharp">analytics</span>
                     <span>Analytics</span>
                 </a>
