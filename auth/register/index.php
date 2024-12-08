@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, 'youth')";
+        $sql = "INSERT INTO users (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, 'organization')";
         $stmt = $pdo->prepare($sql); 
         $stmt->bindParam(1, $firstname, PDO::PARAM_STR);
         $stmt->bindParam(2, $lastname, PDO::PARAM_STR);
