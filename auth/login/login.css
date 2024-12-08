@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.left-section {
+    flex: 1;
+    background-color: #1E88E5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.left-section .logo {
+
+    display: flex;
+    /* Use Flexbox for centering */
+    flex-direction: column;
+    /* Ensure children stack vertically */
+    justify-content: center;
+    /* Center vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+.left-section .logo img {
+    height: 300px;
+    /* Set the height to 300px */
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.left-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.right-section {
+    flex: 1;
+    padding: 40px;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-form label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actions .forgot-password {
+    color: #1E88E5;
+    text-decoration: none;
+}
+
+.actions .forgot-password:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    display: flex;
+    /* Use Flexbox to align items in a row */
+    justify-content: space-between;
+    /* Add space between the buttons */
+    gap: 10px;
+    /* Add some space between the buttons */
+}
+
+.button-container .login-btn,
+.button-container .signup-btn {
+    flex: 1;
+    /* Make both buttons equal in width */
+    padding: 10px;
+    /* Add padding for consistent size */
+    font-size: 1rem;
+    /* Ensure font size consistency */
+    border: none;
+    /* Remove borders for a clean look */
+    border-radius: 5px;
+    /* Add rounded corners */
+    cursor: pointer;
+}
+
+.button-container .login-btn {
+    background-color: #1E88E5;
+    /* Blue for Login */
+    color: white;
+}
+
+.button-container .signup-btn {
+    background-color: #43A047;
+    /* Green for Sign Up */
+    color: white;
+}
+
+.button-container .login-btn:hover,
+.button-container .signup-btn:hover {
+    opacity: 0.9;
+    /* Slight hover effect */
+}
+
+.actions {
+    display: flex;
+    /* Enable flexbox */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    margin-top: 20px;
+    /* Adds some space above the link */
+    height: 50px;
+    /* Set a height for centering */
+}
+
+.actions .back-to-homepage {
+    color: #1E88E5;
+    /* Blue color for the link */
+    text-decoration: none;
+    /* Remove underline from link */
+    font-size: 1rem;
+    /* Adjust font size */
+}
+
+.actions .back-to-homepage:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+    color: #1565C0;
+    /* Darker blue on hover */
+}
+
+.actions-forgot {
+    display: flex;
+    /* Enable flexbox */
+    justify-content: flex-end;
+    /* Align content to the right */
+    margin-top: 5px;
+    /* Adds some space above the link */
+}
+
+.actions-forgot .forgot-password {
+    color: #1E88E5;
+    /* Blue color for the link */
+    text-decoration: none;
+    /* Remove underline from link */
+    font-size: 0.9rem;
+    /* Slightly smaller font size */
+}
+
+.actions-forgot .forgot-password:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+    color: #1565C0;
+    /* Darker blue on hover */
+}
+
+
+/* Base styles for alerts */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  /* Danger alert (red) for errors */
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  /* Success alert (green) for success messages */
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  /* Info alert (blue) for informational messages */
+  .alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+  }
+  
+  /* Warning alert (yellow) */
+  .alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+  }
+  
+  /* Icon styling for alerts */
+  .alert i {
+    margin-right: 10px;
+    font-size: 18px;
+    color: inherit;
+  }
+  
+  /* Close button for alerts */
+  .alert .close {
+    font-size: 18px;
+    color: inherit;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+  
+  /* Close button hover effect */
+  .alert .close:hover {
+    color: #000;
+  }
+  

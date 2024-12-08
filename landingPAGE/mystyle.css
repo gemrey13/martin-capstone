@@ -1,0 +1,557 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  "Poppins";
+}
+
+body {
+    min-height: 100vh;
+    display:inline;
+    background-color: rgb(149, 184, 224);
+    font-weight: 500;
+
+
+}
+
+/* General Navbar Styling */
+.navbar {
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo img {
+  height: 50px; /* Logo size */
+  margin-right: 10px;
+}
+
+.navbar-logo span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333; /* Text color */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-item .nav-link {
+  color: #333;
+  font-weight: 500;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link.active,
+.navbar-nav .nav-item .nav-link:hover {
+  color: #0056b3; /* Highlight color */
+}
+
+/* Dropdown Menu */
+.nav-item.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav-item.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.nav-item.dropdown .dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item.dropdown .dropdown-content a:hover {
+  background-color: #f8f9fa;
+}
+
+/* Profile Icon Dropdown */
+.profile-icon {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
+.nav-item.dropdown .dropdown-content a:last-child {
+  color: #d9534f; /* Logout link */
+}
+
+.nav-item.dropdown .dropdown-content a:last-child:hover {
+  background-color: #f8d7da;
+}
+
+/* Navbar Toggler (Mobile View) */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="%23333" class="bi bi-list" viewBox="0 0 16 16"%3e%3cpath fill-rule="evenodd" d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"/%3e%3c/svg%3e');
+}
+  
+ 
+.progressbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+ }
+
+ .progressbar .line{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: #ddd;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+ }
+
+ .progressbar .line span{
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #43727a;
+
+}
+
+ .progressbar p {
+    position: relative;
+    z-index: 20;
+    width: 40px;
+    border: 4px solid #ddd;
+    color: #756c6c;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    border-radius: 50%;
+    transition: .3s;
+
+ }
+
+ .progressbar p.active{
+    border-color: #43727a;
+    color: #71a29d;
+ }
+
+
+/*-----REGISTRATION FORM-----*/
+.container{
+     font-size: 3rem;
+    margin: 20px;
+    position: relative;
+    max-width: 1200px;
+    justify-content: center;
+    width: 100%;
+    background: rgb(149, 184, 224);
+    padding: 30px;
+    border-radius: 8px;    
+    box-shadow: 0 5px 10px rgba (0, 0, 0, 0.1);
+    
+}
+.tab{
+    background: (149, 184, 224);
+    padding: 1rem;
+}
+.container header {
+    font-size: 30px;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+.container form{
+    margin-top: 30px;
+    position: relative;
+    background-color: #f2f2f2;
+} 
+.container form .details{
+    margin-top: 30px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.container form .title{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+    text-align: center;
+    background: rgba(143, 121, 121, 0.279);
+    
+}
+
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+form .fields .input-box{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 2 - 15px);
+    margin: 4px 0;
+}
+
+label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e2e2e;
+    margin: 8px;
+}
+
+input{
+    outline: none;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    height: 40px;
+    margin: 8px 0;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.input-box input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+form .fields .input-three-box{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% / 3 - 20px);
+    margin: 5px 0;
+   
+}
+
+.fields .left{
+    background: rgb(252, 171, 184);
+    justify-content: center;
+    float: left;
+    width: 50%;
+
+
+}
+
+.leadership-box label{
+    justify-content: center;
+}
+.leadership-box input{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    
+}
+.fields .right{
+    float: right;
+    width: 50%;
+}
+
+.select-box{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    color: #707070;
+    font-size: 1rem;
+    border-radius: 6px;
+    outline: none;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+}
+.select-box select{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    height: 40px;
+    margin: 5px 0;
+    padding: 0 15px;
+}
+
+
+.voice{
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2e2e2e;
+    margin-top: 10px;
+    
+}
+.check-box{
+    position: relative;
+    font-size: 1rem;
+    color: #222;
+    display: block;
+    padding-left: 40px;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.check-box input{
+    position: absolute;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+}
+
+
+
+.checkmark{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border: 2px solid #e7e7e7;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: .2s ease-in-out;
+}
+
+.check-box:hover input ~ .checkmark{
+    border-color: transparent;
+    background-color: #ededed;
+}
+
+.check-box input:checked ~ .checkmark{
+    background-color: #ff836b;
+    border-color: transparent;
+}
+
+.checkmark::after{
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    left: 9px;
+    top: 4px;
+    transform: rotate(45deg);
+}
+
+.check-box input:focus ~ .checkmark{
+    box-shadow: 0 0 0 4px rgb(255 131 107 / .3);
+}
+
+
+/*-----DESCRIPTION BOX----------*/
+.tab .description-box{
+    justify-content: center;
+    align-items: center;
+}
+.description-box h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.description-box textarea{
+    width: 90%;
+    height: 300px;
+    padding: 1rem;
+    margin-left: 40px;
+    border-radius: .5rem;
+    background: #ddd;
+    outline: none;
+    resize: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.description-box textarea:focus{
+    outline: 0;
+    border: 1px solid #000;
+}
+
+
+
+.upload-container {
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .upload-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+ .certificate .org{
+    font-size: 16px;
+    font-weight: 700;
+ }
+  .upload-input {
+    width: 100%;
+    border: 2px solid #fff;
+  }
+  
+  .certificate input{
+    border: 2px solid #fff;
+  }
+  .form-content {
+    line-height: 1.6;
+}
+
+.signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.signature-box {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.signature-box:last-child {
+    margin-right: 0;
+}
+
+.signature-box label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.signature-box input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.date-section {
+    margin-top: 20px;
+}
+
+.date-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1px;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.date-section input {
+    padding: 10px;
+    width: 30%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Align Email and Password Fields Side by Side */
+.fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between fields */
+}
+
+/* Input box layout */
+.input-box {
+    flex: 1 1 50%; /* Ensures two fields per row */
+    min-width: 280px; /* Ensures fields are not too small */
+}
+
+/* Style for the email and password fields */
+.input-box input[type="email"],
+.input-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Adjust container inside password box for checkbox alignment */
+.input-box div {
+    display: flex;
+    align-items: center;
+    margin-top: 8px; /* Space between password field and checkbox */
+}
+
+/* Style for the checkbox */
+#show-password {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px; /* Space between checkbox and label */
+}
+
+/* Style for the checkbox label */
+label[for="show-password"] {
+    font-size: 14px;
+    color: #555;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+  
+/*-----SUBMIT BUTTON-------*/
+
+.btn {
+    width: 20%;
+   outline: none;
+   border: none;
+   font-size: 1rem;
+   font-weight: 500;
+   padding: 1rem;
+   padding-bottom: 2.5rem;
+   border-radius: 3px;
+   margin: 20px;
+   color: #fff;
+   cursor: pointer;
+   background: #00bcd4;
+   transition: .3s ease;
+   gap: 10px;
+   text-align: center;
+ }
+ 
+ .btn:hover {
+    background: #0097a7;
+ }
+
+
+ 
+@media screen and (max-width: 1200px) {
+    .form .column {
+        flex-wrap: wrap;
+    }
+}
+

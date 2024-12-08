@@ -1,0 +1,505 @@
+:root {
+    --box-shadow: 0 2rem 3rem var(--clr-light);
+    --padding-1: 1.2rem;
+    --card-padding: 1.8rem;
+    --clr-white: #fff;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*----------SIDE BAR----------*/
+.sidebar{
+    width: 300px;
+    position: fixed;
+    height: 100vh; /* Ensure the sidebar takes the full viewport height */
+    left: 0;
+    top: 0;
+    background: rgb(50, 8, 202);
+    z-index: 100;
+    overflow: auto;
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+}
+
+.logo{
+    height: 90px;
+    padding: 1rem 0 1rem 2rem; /* Corrected padding syntax */
+    color: #fff;
+}
+.logo img{
+    width: 50px;
+    height: 50px;
+}
+
+.logo span{
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.sidebar-menu li{
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+.sidebar-menu {
+    margin-top: 1rem;
+    position: relative;
+    display: block;
+}
+.sidebar-menu a{
+    padding-left: 1rem;
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 3.2rem;
+    transition: all 0.2s ease-in-out; /* Smoothen the transition */
+}
+
+.sidebar-menu a:hover{
+    background: #fff;
+    padding: 1rem 0; /* Simplified padding */
+    color: pink;
+    border-radius: 30px 0 0 30px; /* Simplified border-radius */
+}
+
+.sidebar-menu a span:first-child{
+    font-size: 1.5rem;
+    padding-right: 1rem;
+}
+
+
+/*======SIDE BAR========*/
+
+
+.main-content{
+    margin-left: 300px;
+
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    left: 300px;
+    width: calc(100% - 300px);
+    top: 0;
+    z-index: 100;
+}
+
+#nav-toggle:checked + .sidebar{
+    width: 70px;
+}
+#nav-toggle:checked + .logo,
+#nav-toggle:checked + .sidebar-menu
+{
+    padding-left: 1rem;
+}
+#nav-toggle:checked + .sidebar .logo h2 span:last-child,
+#nav-toggle:checked + .sidebar li a span:last-child{
+    display: none;
+}
+    
+
+header h2{
+    color: #222;
+}
+
+header label span {
+    font-size: 1.7rem;
+    padding-right: 1rem;
+}
+.user-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.user-wrapper img{
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.user-wrapper small{
+    display: inline-block;
+    color: rgb(173, 58, 58);
+
+}
+
+main{
+    margin-top: 85px;
+    padding: 1rem;
+    background: #f1f5f9;
+    min-height: calc(100vh - 90px);
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:1.5rem;
+    margin-top: 0.5rem;
+   
+}
+
+.card-single{
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 2rem 3rem #e3dcdc;
+
+}
+
+.card-single div:last-child span{
+    font-size: 3rem;
+    color: rgb(199, 197, 65);
+
+}
+
+.card-single div:first-child span{
+    color: grey;
+}
+
+.card-single:last-child{
+    background: rgb(194, 100, 100);
+}
+
+
+.card-single:last-child h1,
+.card-single:last-child div:first-child span,
+.card-single:last-child div:last-child span{
+    color: #fff;
+
+}
+
+.recent-grid{
+    margin-top: 3rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 72% auto;
+}
+
+.card{
+    background: #fff;
+    
+}
+
+.card-header,
+.card-body{
+    padding: 1rem;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+.card-header button{
+    background: grey;
+    border-radius: 10px;
+    color: #fff;
+    font-size:  0.9rem;
+    padding: .5rem 1rem;
+    border: 1px solid grey;
+}
+.card-header span{
+    font-size: 1rem;
+
+
+
+   
+}
+table {
+    border-collapse: collapse;
+}
+thead tr{
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 2px solid #f0f0f0;
+}
+thead td{
+    font-weight: 700;
+}
+
+td{
+    padding: .5rem 1rem;
+    font-size: .9rem;
+    color: #222;
+}
+tr td:last-child{
+    display: flex;
+    align-items: center;
+}
+
+
+.table-responsive{
+    width: 100%;
+    overflow-x: auto;
+}
+
+.customer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     padding: .5rem .7rem;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+}
+
+.info img{
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.info h4{
+    font-size: .8rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.info small{
+    font-weight: 600 ;
+}
+
+@media screen and (max-width: 768px) {
+    .main-content {
+      padding: 1rem;
+    }
+  
+    .navbar .logo h2 {
+      display: none;
+    }
+  
+    .nav-toggle-label {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 4.5rem;
+      left: 1rem;
+      background-color: #333;
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .nav-links li {
+      margin: 0;
+      text-align: center;
+    }
+  
+    .nav-links a {
+      padding: 1rem;
+      display: block;
+    }
+  
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  
+    .recent-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .card-single {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .card-single h1 {
+      font-size: 1.5rem;
+    }
+  
+    .navbar .logo img {
+      width: 30px;
+    }
+  }
+
+  /* floating button */
+
+  /* Floating button container */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#main-button {
+    background-color: #4CAF50; /* Adjust the color as you want */
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* admin post css */
+
+
+/* Notification bell icon style */
+.bell-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    right: 30px;
+}
+
+/* Notification dropdown style (hidden by default) */
+.notification-dropdown {
+    display: none; /* Hidden initially */
+    position: absolute;
+    top: 60px; /* Adjust this to position below the bell icon */
+    right: 22%;
+    width: 350px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.notification-dropdown h4 {
+    margin: 0 0 10px;
+    font-size: 1.1em;
+}
+
+.notification-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.9em;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.notification-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.notification-item p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.notification-item small {
+    color: #888;
+    font-size: 0.8em;
+}
+
+/* Message Icon */
+/* Message Icon */
+.message-icon {
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    right: 20px;
+}
+
+/* Message dropdown style (hidden by default) */
+.message-dropdown {
+    display: none; /* Hidden initially */
+    position: absolute;
+    top: 60px; /* Adjust this to position below the message icon */
+    right: 15%; /* Adjust as needed to align with the message icon */
+    width: 350px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.message-dropdown h4 {
+    margin: 0 0 10px;
+    font-size: 1.1em;
+}
+
+.message-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.9em;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.message-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.message-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.message-item:last-child {
+    border-bottom: none;
+}
+
+.message-item .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.message-item p {
+    margin: 10px;
+    font-size: 0.9em;
+}
+.message-item small {
+    color: #888;
+    font-size: 0.8em;
+}
