@@ -19,7 +19,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
                     <a href="register-form.php" class="btn btn-primary">Get Started</a>
                 <?php endif; ?>
-
             </div>
 
             <div class="col-lg-5 d-flex justify-content-center align-items-center">
@@ -30,8 +29,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
 </div>
 
 
-
-<!---Home---->
 <section class="banner" id="home">
     <div class="banner-content">
 
@@ -45,9 +42,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <div class="mySlides fade">
                 <img src="assets/images/news3.jpg" style="width:100%" alt="Banner Image">
             </div>
-            <!-- Add more images as needed -->
         </div>
-
     </div>
 </section>
 
@@ -146,7 +141,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
         </div>
     </div>
-
 </section>
 
 <section id="news">

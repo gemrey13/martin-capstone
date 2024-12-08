@@ -29,7 +29,6 @@
                 </li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <!-- If the user is logged in, show the profile and logout options -->
                     <li class="nav-item">
                         <a class="nav-link" href="#notifications">
                             <i class='bx bxs-bell'></i> 
