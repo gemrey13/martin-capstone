@@ -10,6 +10,41 @@ include('../components/sidebar.php');
 include('../components/navbar.php');
 ?>
 
+<?php
+require '../../connection/connection.php';
+
+try {
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $pdo->prepare("SELECT org.id, org.org_name AS name, org.approved_at, org.declined_at, org.status FROM organizations org");
+    $stmt->execute();
+
+    $organizations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($organizations)) {
+        echo "No organizations found in the database.<br>";
+    } else {
+        echo "Organizations fetched successfully.<br>";
+        echo "<pre>";
+        print_r($organizations);
+        echo "</pre>";
+    }
+} catch (PDOException $e) {
+    // Log and display the error message if any
+    error_log($e->getMessage());  // Log error for debugging (optional)
+    echo "Error: Unable to fetch organizations.<br>";
+    echo "Error details: " . $e->getMessage();
+}
+?>
+
+
+<style>
+    th {
+        text-align: left;
+    }
+</style>
+
+
 <div class="main-content">
     <main>
         <div class="cards">
@@ -67,151 +102,150 @@ include('../components/navbar.php');
         </div>
 
         <div class="recent-grid">
-            <div class="projects">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Organization list</h2>
-                        <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table width="100%">
-                                <thead>
-                                    <tr>
-                                        <td>Organization Name</td>
-                                        <td>Date Approved</td>
-                                        <td>Date Expired</td>
-                                        <td>Status</td>
-                                        <td>Action</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Love Organization</td>
-                                        <td>07-05-2024</td>
-                                        <td></td>
-                                        <td>
-                                            <span class="status">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>DLL Dance Company</td>
-                                        <td>04-23-2023</td>
-                                        <td></td>
-                                        <td>
-                                            <span class="status">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>DLL Dance Company</td>
-                                        <td>04-23-2023</td>
-                                        <td>04-23-2024</td>
-                                        <td>
-                                            <span class="status">Expired</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Love Organization</td>
-                                        <td>07-05-2023</td>
-                                        <td>07-05-2024</td>
-                                        <td>
-                                            <span class="status">Expired</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>DLL Dance Company</td>
-                                        <td>04-23-2023</td>
-                                        <td></td>
-                                        <td>
-                                            <span class="status">Active</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>DLL Dance Company</td>
-                                        <td>02-15-2023</td>
-                                        <td>02-15-2024</td>
-                                        <td>
-                                            <span class="status">Expired</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
+    <div class="projects">
+        <div class="card">
+            <div class="card-header">
+                <h2>Organization List</h2>
+                <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
             </div>
-        </div>
-</div>
 
-<main>
-    <div class="recent-grid">
-        <div class="projects">
-            <div class="card-to">
-                <div class="card-header">
-                    <h2>Analytics</h2>
-                    <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
-                </div>
-
-                <div style="width: 200%; margin: auto;">
-                    <canvas id="myPieChart"></canvas>
-                </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const ctx = document.getElementById('myPieChart').getContext('2d');
-                        const data = {
-                            labels: ['Faith-Base', 'Community-Base', 'School-base', 'Federationn'],
-                            datasets: [{
-                                label: 'Numbers of Approved Organizations Every Year',
-                                data: [12, 19, 3, 5, 2, 3],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-
-                                ],
-                                borderWidth: 1
-                            }]
-                        };
-
-                        const config = {
-                            type: 'bar',
-                            data: data,
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: 'top',
-                                    },
-                                    tooltip: {
-                                        callbacks: {
-                                            label: function(tooltipItem) {
-                                                return `${tooltipItem.label}: ${tooltipItem.raw}`;
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th>Organization Name</th>
+                                <th>Date Approved</th>
+                                <th>Date Expired</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($organizations)): ?>
+                                <?php foreach ($organizations as $org): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($org['name']); ?></td>
+                                        
+                                        <!-- Display Date Approved or N/A if the status is 'on review' -->
+                                        <td>
+                                            <?php
+                                            // Check if the status is 'approved', display date, else N/A
+                                            if ($org['status'] === 'approved') {
+                                                echo htmlspecialchars($org['approved_at']);
+                                            } else {
+                                                echo 'N/A';
                                             }
-                                        }
-                                    }
-                                }
-                            }
-                        };
+                                            ?>
+                                        </td>
 
-                        const myPieChart = new Chart(ctx, config);
-                    });
-                </script>
+                                        <!-- Display Date Expired or N/A if the status is 'on review' -->
+                                        <td>
+                                            <?php
+                                            // Check if the status is 'declined', display date, else N/A
+                                            if ($org['status'] === 'declined') {
+                                                echo htmlspecialchars($org['declined_at']);
+                                            } else {
+                                                echo 'N/A';
+                                            }
+                                            ?>
+                                        </td>
+                                        
+                                        <td>
+                                            <span class="status"><?= htmlspecialchars($org['status']); ?></span>
+                                        </td>
+                                        
+                                        <td>
+                                            <?php if ($org['status'] === 'on review'): ?>
+                                                <a href="approve.php?id=<?= $org['id']; ?>" class="btn btn-approve">Approve</a>
+                                                <a href="decline.php?id=<?= $org['id']; ?>" class="btn btn-decline">Decline</a>
+                                            <?php else: ?>
+                                                <span>Action Not Available</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5">No organizations found</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</main>
+</div>
+
+
+
+        <main>
+            <div class="recent-grid">
+                <div class="projects">
+                    <div class="card-to">
+                        <div class="card-header">
+                            <h2>Analytics</h2>
+                            <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
+                        </div>
+
+                        <div style="width: 200%; margin: auto;">
+                            <canvas id="myPieChart"></canvas>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const ctx = document.getElementById('myPieChart').getContext('2d');
+                                const data = {
+                                    labels: ['Faith-Base', 'Community-Base', 'School-base', 'Federationn'],
+                                    datasets: [{
+                                        label: 'Numbers of Approved Organizations Every Year',
+                                        data: [12, 19, 3, 5, 2, 3],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                };
+
+                                const config = {
+                                    type: 'bar',
+                                    data: data,
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: {
+                                                position: 'top',
+                                            },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: function(tooltipItem) {
+                                                        return `${tooltipItem.label}: ${tooltipItem.raw}`;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                };
+
+                                const myPieChart = new Chart(ctx, config);
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </main>
 </div>
 
 <?php include('../components/footer.php'); ?>

@@ -503,3 +503,8 @@ tr td:last-child{
     color: #888;
     font-size: 0.8em;
 }
+
+
+th {
+    text-align: left;
+}
