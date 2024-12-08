@@ -1,3 +1,24 @@
+<?php
+require '../../connection/connection.php';
+
+$user_id = $_SESSION['user_id'];  // Assuming the user ID is stored in the session
+$query = "SELECT firstname, lastname FROM users WHERE id = :user_id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+if ($user) {
+    $first_name = $user['firstname'];
+    $last_name = $user['lastname'];
+} else {
+    $first_name = "Unknown";
+    $last_name = "User";
+}
+?>
+
+
 <header>
     <h1>
         <label for="nav-toogle">
@@ -9,7 +30,6 @@
 
     <div class="user-wrapper">
         <div class="notif">
-            <!-- Notification Bell Icon with Clickable Dropdown -->
             <i class="bx bx-bell bell-icon" onclick="toggleNotifications()"></i>
             <div id="notificationDropdown" class="notification-dropdown">
                 <h4>Notifications</h4>
@@ -18,7 +38,6 @@
                     <span>Mark all as read</span>
                 </div>
                 <div class="notification-list">
-                    <!-- Add notification items here -->
                     <div class="customer">
                         <div class="info">
                             <img src="/capstone/assets/images/avatar.jpg" width="40px" height="40px" alt="">
@@ -29,11 +48,11 @@
                         </div>
                         <div>
                             <form action="approved.php" method="post" style="display:inline;">
-                                <input type="hidden" name="organization_id" value="1"> <!-- You can change the value as needed -->
+                                <input type="hidden" name="organization_id" value="1"> 
                                 <button type="submit" name="action" value="accept">accept</button>
                             </form>
                             <form action="declined.php" method="post" style="display:inline;">
-                                <input type="hidden" name="organization_id" value="1"> <!-- You can change the value as needed -->
+                                <input type="hidden" name="organization_id" value="1"> 
                                 <button type="submit" name="action" value="decline">decline</button>
                             </form>
                         </div>
@@ -61,14 +80,13 @@
                         <p>Message 2</p>
                         <small>30 mins ago</small>
                     </div>
-                    <!-- Add more message items as needed -->
                 </div>
             </div>
         </div>
 
         <img src="/capstone/assets/images/avatar.jpg" width="40px" height="40px" alt="">
         <div>
-            <h4>Elaine Manalo</h4>
+            <h4><?= htmlspecialchars($first_name . ' ' . $last_name); ?></h4>
             <small>Admin</small>
             <a href="../../auth/logout.php">
                 <span class="material-symbols-sharp"></span>
