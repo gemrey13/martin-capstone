@@ -21,19 +21,8 @@ try {
 
     $organizations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    if (empty($organizations)) {
-        echo "No organizations found in the database.<br>";
-    } else {
-        echo "Organizations fetched successfully.<br>";
-        echo "<pre>";
-        print_r($organizations);
-        echo "</pre>";
-    }
 } catch (PDOException $e) {
-    // Log and display the error message if any
-    error_log($e->getMessage());  // Log error for debugging (optional)
-    echo "Error: Unable to fetch organizations.<br>";
-    echo "Error details: " . $e->getMessage();
+    error_log($e->getMessage()); 
 }
 ?>
 
@@ -44,47 +33,52 @@ try {
     }
 
     .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 2px solid transparent; /* Default border */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-}
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        /* Default border */
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
 
-/* Approve button style */
-.btn-approve {
-    background-color: #28a745; /* Green for Approve */
-    color: white;
-    border: 2px solid #28a745;
-}
+    /* Approve button style */
+    .btn-approve {
+        background-color: #28a745;
+        /* Green for Approve */
+        color: white;
+        border: 2px solid #28a745;
+    }
 
-.btn-approve:hover {
-    background-color: #218838; /* Darker green on hover */
-    border-color: #218838;
-}
+    .btn-approve:hover {
+        background-color: #218838;
+        /* Darker green on hover */
+        border-color: #218838;
+    }
 
-/* Decline button style */
-.btn-decline {
-    background-color: #dc3545; /* Red for Decline */
-    color: white;
-    border: 2px solid #dc3545;
-}
+    /* Decline button style */
+    .btn-decline {
+        background-color: #dc3545;
+        /* Red for Decline */
+        color: white;
+        border: 2px solid #dc3545;
+    }
 
-.btn-decline:hover {
-    background-color: #c82333; /* Darker red on hover */
-    border-color: #c82333;
-}
+    .btn-decline:hover {
+        background-color: #c82333;
+        /* Darker red on hover */
+        border-color: #c82333;
+    }
 
-/* Disabled button or action unavailable */
-span {
-    color: #888;
-    font-style: italic;
-}
+    /* Disabled button or action unavailable */
+    span {
+        color: #888;
+        font-style: italic;
+    }
 </style>
 
 
@@ -192,12 +186,14 @@ span {
 
                                                 <td>
                                                     <?php if ($org['status'] === 'on review'): ?>
-                                                        <a href="approve.php?id=<?= $org['id']; ?>" class="btn btn-success btn-sm">Approve</a>
-                                                        <a href="decline.php?id=<?= $org['id']; ?>" class="btn btn-danger btn-sm">Decline</a>
+                                                        <!-- Add 'id' and 'callback' parameters properly -->
+                                                        <a href="../action/approved.php?id=<?= $org['id']; ?>&callback=../dashboard/" class="btn btn-success btn-sm">Approve</a>
+                                                        <a href="../action/declined.php?id=<?= $org['id']; ?>&callback=../dashboard/" class="btn btn-danger btn-sm">Decline</a>
                                                     <?php else: ?>
                                                         <span>Action Not Available</span>
                                                     <?php endif; ?>
                                                 </td>
+
 
                                             </tr>
                                         <?php endforeach; ?>
