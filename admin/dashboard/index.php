@@ -16,7 +16,7 @@ require '../../connection/connection.php';
 try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->prepare("SELECT org.id, org.org_name AS name, org.approved_at, org.declined_at, org.status FROM organizations org");
+    $stmt = $pdo->prepare("SELECT org.id, org.org_name AS name, org.approved_at, org.declined_at, org.created_at, org.status FROM organizations org");
     $stmt->execute();
 
     $organizations = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -42,6 +42,49 @@ try {
     th {
         text-align: left;
     }
+
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent; /* Default border */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Approve button style */
+.btn-approve {
+    background-color: #28a745; /* Green for Approve */
+    color: white;
+    border: 2px solid #28a745;
+}
+
+.btn-approve:hover {
+    background-color: #218838; /* Darker green on hover */
+    border-color: #218838;
+}
+
+/* Decline button style */
+.btn-decline {
+    background-color: #dc3545; /* Red for Decline */
+    color: white;
+    border: 2px solid #dc3545;
+}
+
+.btn-decline:hover {
+    background-color: #c82333; /* Darker red on hover */
+    border-color: #c82333;
+}
+
+/* Disabled button or action unavailable */
+span {
+    color: #888;
+    font-style: italic;
+}
 </style>
 
 
@@ -102,81 +145,74 @@ try {
         </div>
 
         <div class="recent-grid">
-    <div class="projects">
-        <div class="card">
-            <div class="card-header">
-                <h2>Organization List</h2>
-                <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
-            </div>
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Organization List</h2>
+                        <button>See all <span class="material-symbols-sharp">arrow_right_alt</span></button>
+                    </div>
 
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table width="100%">
-                        <thead>
-                            <tr>
-                                <th>Organization Name</th>
-                                <th>Date Approved</th>
-                                <th>Date Expired</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($organizations)): ?>
-                                <?php foreach ($organizations as $org): ?>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table width="100%">
+                                <thead>
                                     <tr>
-                                        <td><?= htmlspecialchars($org['name']); ?></td>
-                                        
-                                        <!-- Display Date Approved or N/A if the status is 'on review' -->
-                                        <td>
-                                            <?php
-                                            // Check if the status is 'approved', display date, else N/A
-                                            if ($org['status'] === 'approved') {
-                                                echo htmlspecialchars($org['approved_at']);
-                                            } else {
-                                                echo 'N/A';
-                                            }
-                                            ?>
-                                        </td>
-
-                                        <!-- Display Date Expired or N/A if the status is 'on review' -->
-                                        <td>
-                                            <?php
-                                            // Check if the status is 'declined', display date, else N/A
-                                            if ($org['status'] === 'declined') {
-                                                echo htmlspecialchars($org['declined_at']);
-                                            } else {
-                                                echo 'N/A';
-                                            }
-                                            ?>
-                                        </td>
-                                        
-                                        <td>
-                                            <span class="status"><?= htmlspecialchars($org['status']); ?></span>
-                                        </td>
-                                        
-                                        <td>
-                                            <?php if ($org['status'] === 'on review'): ?>
-                                                <a href="approve.php?id=<?= $org['id']; ?>" class="btn btn-approve">Approve</a>
-                                                <a href="decline.php?id=<?= $org['id']; ?>" class="btn btn-decline">Decline</a>
-                                            <?php else: ?>
-                                                <span>Action Not Available</span>
-                                            <?php endif; ?>
-                                        </td>
+                                        <th>Organization Name</th>
+                                        <th>Date Approved/Expired</th>
+                                        <th>Date Created</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center;">Action</th>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="5">No organizations found</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    <?php if (!empty($organizations)): ?>
+                                        <?php foreach ($organizations as $org): ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($org['name']); ?></td>
+
+                                                <td>
+                                                    <?php
+                                                    if ($org['status'] === 'approved') {
+                                                        echo htmlspecialchars($org['approved_at']);
+                                                    } elseif ($org['status'] === 'declined') {
+                                                        echo htmlspecialchars($org['declined_at']);
+                                                    } else {
+                                                        echo 'On Review';
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?= htmlspecialchars($org['created_at']); ?>
+
+                                                </td>
+
+                                                <td>
+                                                    <span class="status"><?= htmlspecialchars($org['status']); ?></span>
+                                                </td>
+
+                                                <td>
+                                                    <?php if ($org['status'] === 'on review'): ?>
+                                                        <a href="approve.php?id=<?= $org['id']; ?>" class="btn btn-success btn-sm">Approve</a>
+                                                        <a href="decline.php?id=<?= $org['id']; ?>" class="btn btn-danger btn-sm">Decline</a>
+                                                    <?php else: ?>
+                                                        <span>Action Not Available</span>
+                                                    <?php endif; ?>
+                                                </td>
+
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="5">No organizations found</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 
