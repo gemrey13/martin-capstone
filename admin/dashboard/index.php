@@ -20,9 +20,13 @@ try {
     $stmt->execute();
 
     $organizations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
-    error_log($e->getMessage()); 
+    error_log($e->getMessage());
+}
+
+if (isset($_GET['message']) && !empty($_GET['message'])) {
+    $message = htmlspecialchars($_GET['message']);  // Sanitize the message before displaying
+    $message_type = isset($_GET['type']) ? $_GET['type'] : 'info'; // Default to 'info' type
 }
 ?>
 
@@ -73,14 +77,9 @@ try {
         /* Darker red on hover */
         border-color: #c82333;
     }
-
-    /* Disabled button or action unavailable */
-    span {
-        color: #888;
-        font-style: italic;
-    }
 </style>
 
+<link rel="stylesheet" href="../components/alert.css">
 
 <div class="main-content">
     <main>
@@ -147,6 +146,24 @@ try {
                     </div>
 
                     <div class="card-body">
+                        <?php if (isset($message)): ?>
+                            <div class="alert alert-<?= $message_type; ?>">
+                                <span class="alert-icon">
+                                    <?php
+                                    // Add icons based on message type
+                                    if ($message_type === 'success') {
+                                        echo '✔️';
+                                    } elseif ($message_type === 'error') {
+                                        echo '❌';
+                                    } else {
+                                        echo 'ℹ️';
+                                    }
+                                    ?>
+                                </span>
+                                <p><?= $message; ?></p>
+                                <button class="close-alert" onclick="this.parentElement.style.display='none'">×</button>
+                            </div>
+                        <?php endif; ?>
                         <div class="table-responsive">
                             <table width="100%">
                                 <thead>

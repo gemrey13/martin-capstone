@@ -10,15 +10,15 @@ try {
 
         $callback = isset($_GET['callback']) ? $_GET['callback'] : '../dashboard/';
         
-        header("Location: $callback?message=Organization declined!");
+        header("Location: $callback?message=Organization declined!&type=success");
         exit;
     } else {
-        header('Location: organization_list.php?message=Invalid organization ID');
+        header('Location: organization_list.php?message=Invalid organization ID&type=error');
         exit;
     }
 } catch (PDOException $e) {
     error_log($e->getMessage());  
-    header('Location: organization_list.php?message=Error declining the organization');
+    header('Location: organization_list.php?message=Error declining the organization&type=error');
     exit;
 }
 ?>
