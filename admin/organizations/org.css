@@ -1,0 +1,21 @@
+.customers .card-body .customer form {
+    display: inline;
+}
+
+.customers .card-body .customer form button {
+    background: #28a745;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.customers .card-body .customer form button[name="action"][value="decline"] {
+    background: #dc3545;
+}
+
+.customers .card-body .customer form button:hover {
+    opacity: 0.9;
+}

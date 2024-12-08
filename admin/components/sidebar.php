@@ -21,7 +21,7 @@
             </li>
 
             <li>
-                <a href="approved.php">
+                <a href="../organizations/">
                     <span class="material-symbols-sharp">thumb_up</span>
                     <span>Org. List</span>
                 </a>
