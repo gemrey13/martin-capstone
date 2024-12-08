@@ -30,56 +30,9 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
 }
 ?>
 
-
-<style>
-    th {
-        text-align: left;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        border: 2px solid transparent;
-        /* Default border */
-        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    }
-
-    /* Approve button style */
-    .btn-approve {
-        background-color: #28a745;
-        /* Green for Approve */
-        color: white;
-        border: 2px solid #28a745;
-    }
-
-    .btn-approve:hover {
-        background-color: #218838;
-        /* Darker green on hover */
-        border-color: #218838;
-    }
-
-    /* Decline button style */
-    .btn-decline {
-        background-color: #dc3545;
-        /* Red for Decline */
-        color: white;
-        border: 2px solid #dc3545;
-    }
-
-    .btn-decline:hover {
-        background-color: #c82333;
-        /* Darker red on hover */
-        border-color: #c82333;
-    }
-</style>
-
 <link rel="stylesheet" href="../components/alert.css">
+
+<link rel="stylesheet" href="../components/button.css">
 
 <div class="main-content">
     <main>

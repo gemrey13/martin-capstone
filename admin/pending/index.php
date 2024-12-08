@@ -16,7 +16,7 @@ require '../../connection/connection.php';
 try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->prepare("SELECT org.id, org.org_name AS name, org.approved_at, org.declined_at, org.created_at, org.status FROM organizations org");
+    $stmt = $pdo->prepare("SELECT org.id, org.org_name AS name, org.approved_at, org.declined_at, org.created_at, org.status FROM organizations org ");
     $stmt->execute();
 
     $organizations = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -31,6 +31,8 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
 ?>
 
 
+<link rel="stylesheet" href="../components/alert.css">
+<link rel="stylesheet" href="../components/button.css">
 
 
 <div class="main-content">
@@ -103,8 +105,8 @@ if (isset($_GET['message']) && !empty($_GET['message'])) {
                                                 <td>
                                                     <?php if ($org['status'] === 'on review'): ?>
                                                         <!-- Add 'id' and 'callback' parameters properly -->
-                                                        <a href="../action/approved.php?id=<?= $org['id']; ?>&callback=../dashboard/" class="btn btn-success btn-sm">Approve</a>
-                                                        <a href="../action/declined.php?id=<?= $org['id']; ?>&callback=../dashboard/" class="btn btn-danger btn-sm">Decline</a>
+                                                        <a href="../action/approved.php?id=<?= $org['id']; ?>&callback=../pending/" class="btn btn-success btn-sm">Approve</a>
+                                                        <a href="../action/declined.php?id=<?= $org['id']; ?>&callback=../pending/" class="btn btn-danger btn-sm">Decline</a>
                                                     <?php else: ?>
                                                         <span>Action Not Available</span>
                                                     <?php endif; ?>
