@@ -6,12 +6,12 @@ include('../components/header.php');
 include('../components/sidebar.php');
 ?>
 
+<?php
+include('../components/navbar.php');
+?>
+
+
 <div class="main-content">
-
-    <?php
-    include('../components/navbar.php');
-    ?>
-
     <main>
         <div class="cards">
             <div class="card-single">
