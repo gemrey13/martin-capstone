@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     die("You must be logged in to create an organization.");
 }
 
-$userId = $_SESSION['user_id'];  
+$userId = $_SESSION['user_id'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,14 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $majorClassification = $_POST['major_classification'];
     $subClassification = $_POST['sub_classification'];
     $description = $_POST['description'];
-    $status = 'on review'; 
+    $status = 'on review';
 
     $barangayQuery = "SELECT id FROM barangays WHERE barangay_name = :barangay";
     $stmt = $pdo->prepare($barangayQuery);
     $stmt->bindParam(':barangay', $barangay, PDO::PARAM_STR);
     $stmt->execute();
     $barangayResult = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
     if ($barangayResult) {
         $barangayId = $barangayResult['id'];
     } else {
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             (org_name, address, telephone, cellphone, number_of_members, date_established, municipality, barangay_id, major_classification, sub_classification, description, user_id, status) 
             VALUES 
             (:org_name, :address, :telephone, :cellphone, :number_of_members, :date_established, :municipality, :barangay_id, :major_classification, :sub_classification, :description, :user_id, :status)";
-        
+
         $stmt = $pdo->prepare($insertOrgQuery);
         $stmt->bindParam(':org_name', $orgName);
         $stmt->bindParam(':address', $orgAddress);
@@ -64,10 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':major_classification', $majorClassification);
         $stmt->bindParam(':sub_classification', $subClassification);
         $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':user_id', $userId); 
-        $stmt->bindParam(':status', $status);  
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':status', $status);
         $stmt->execute();
-        
+
         $orgId = $pdo->lastInsertId();
 
         $headFamilyName = $_POST['head_family_name'];
@@ -75,12 +75,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headMiddleName = $_POST['head_middle_name'];
         $headContactNumber = $_POST['head_contact_number'];
         $headEmail = $_POST['head_email'];
-        
+
         $insertHeadQuery = "INSERT INTO organization_heads 
             (org_id, family_name, given_name, middle_name, contact_number, email) 
             VALUES 
             (:org_id, :family_name, :given_name, :middle_name, :contact_number, :email)";
-        
+
         $stmt = $pdo->prepare($insertHeadQuery);
         $stmt->bindParam(':org_id', $orgId);
         $stmt->bindParam(':family_name', $headFamilyName);
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 (org_id, family_name, given_name, middle_name, contact_number, email) 
                 VALUES 
                 (:org_id, :family_name, :given_name, :middle_name, :contact_number, :email)";
-            
+
             $stmt = $pdo->prepare($insertAdviserQuery);
             $stmt->bindParam(':org_id', $orgId);
             $stmt->bindParam(':family_name', $adviserFamilyName);
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             (org_id, registration_form, list_of_officers, list_of_members, constitution_bylaws) 
             VALUES 
             (:org_id, :registration_form, :list_of_officers, :list_of_members, :constitution_bylaws)";
-        
+
         $stmt = $pdo->prepare($insertDocsQuery);
         $stmt->bindParam(':org_id', $orgId);
         $stmt->bindParam(':registration_form', $registrationFormPath);
@@ -125,16 +125,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':constitution_bylaws', $constitutionPath);
         $stmt->execute();
 
-        echo "Organization and associated data inserted successfully!";
+        header("Location: ../home/");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 }
 
-function uploadFile($file, $uploadDir) {
+function uploadFile($file, $uploadDir)
+{
     $targetFile = $uploadDir . "/" . basename($file["name"]);
     $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-    
+
     $validTypes = ["jpg", "jpeg", "png", "pdf", "docx"];
     if (!in_array($fileType, $validTypes)) {
         die("Invalid file type.");
@@ -150,4 +151,3 @@ function uploadFile($file, $uploadDir) {
         die("Error uploading file.");
     }
 }
-?>
