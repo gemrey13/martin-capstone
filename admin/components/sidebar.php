@@ -49,7 +49,7 @@
             </li>
 
             <li>
-                <a href="calendar.php">
+                <a href="../calendar/">
                     <span class="material-symbols-sharp">event_note</span>
                     <span>Calendar</span>
                 </a>
