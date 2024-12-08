@@ -1,10 +1,11 @@
 <?php
 session_start();
-require '../../connection/connection.php';  
+require '../../connection/connection.php';
 
 $error_message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize input data
     $firstname = trim($_POST['firstname']);
     $lastname = trim($_POST['lastname']);
     $email = trim($_POST['email']);
@@ -20,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, 'organization')";
+        $sql = "INSERT INTO users (firstname, lastname, email, password, role) VALUES (?, ?, ?, ?, 'youth')";
         $stmt = $pdo->prepare($sql); 
         $stmt->bindParam(1, $firstname, PDO::PARAM_STR);
         $stmt->bindParam(2, $lastname, PDO::PARAM_STR);
@@ -35,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $stmt = null;  
+    $stmt = null; 
+}
 ?>
 
 <!DOCTYPE html>
