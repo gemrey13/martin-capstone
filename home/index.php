@@ -1,5 +1,8 @@
-<?php include('../components/header.php'); ?>
+<?php
+include('../components/header.php');
 
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
 
 <div class="hero vh-100 d-flex align-items-center" id="home">
     <div class="hero-container container">
@@ -9,17 +12,24 @@
                 <p class="text-white my-3">
                     Specifically provided in Republic Act 10742 or the SK Reform Act of 2015, LDYO aims to ensure that all programs for the youth are well implemented with a long-term goal of creating future leaders with imbued patriotism and drive for growth.
                 </p>
-                <a href="register-form.php" class="btn btn-primary">Get Started</a>
+                <?php if ($isLoggedIn): ?>
+
+                    <a href="applicationform.php" class="btn btn-primary" style="padding:20px;">Apply for Accreditation</a>
+                <?php else: ?>
+
+                    <a href="register-form.php" class="btn btn-primary">Get Started</a>
+                <?php endif; ?>
+
             </div>
 
-            <!-- Right Column (30%) - Image Only -->
             <div class="col-lg-5 d-flex justify-content-center align-items-center">
-                <!-- Logo Image -->
                 <img src="../landingPAGE/LYDO-logo.png" alt="LYDO Logo" width="400" height="400">
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!---Home---->
 <section class="banner" id="home">
