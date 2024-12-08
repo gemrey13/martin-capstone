@@ -7,7 +7,7 @@
     <div class="sidebar-menu">
         <ul>
             <li>
-                <a href="admin.php">
+                <a href="../dashboard/">
                     <span class="material-symbols-sharp">grid_view</span>
                     <span>Dashboard</span>
                 </a>
