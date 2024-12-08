@@ -1,44 +1,11 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
-    <link rel="stylesheet" href="user.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .chart-container {
-                width: 100%;
-                max-width: 600px;
-                margin: 20px auto;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            .chart-header {
-                text-align: center;
-                margin-bottom: 20px;
-                font-size: 24px;
-                color: #333;
-            }
-            @media (max-width: 768px) {
-                .chart-container {
-                    width: 90%;
-                }
-            }
-    </style>
-</head>
-
-<body>
+<?php
+include('../components/header.php');
+?>
     <!--============NAVIGATION BAR==========-->
     <input type="checkbox" id="nav-toogle">
     <div class="sidebar">
         <div class="logo">
-            <h2><img src="assets/images/LYDO-logo.png">LYDC</h2>
+            <h2><img src="../../assets/images/LYDO-logo.png">LYDC</h2>
         </div>
         
         <div class="sidebar-menu">
@@ -107,7 +74,7 @@
 
 
             <div class="user-wrapper">
-                <img src="assets/images/avatar.jpg" width="40px" height="40px" alt="">
+                <img src="../../assets/images/avatar.jpg" width="40px" height="40px" alt="">
                 <div>
                     <h4>Martin Saturay</h4>
                     <small>User</small>
@@ -183,11 +150,5 @@
 
         </main>
     </div>
- 
-    <!--============SCRIPT==========-->
-    <script src="admin.js"></script>
-    <!--============icons===========-->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-</html>
+
+    <?php include('../components/footer.php'); ?>

@@ -39,7 +39,7 @@
                             <i class='bx bxs-user-circle profile-icon'></i> Profile
                         </a>
                         <div class="dropdown-content" style="font: size 13px;">
-                            <a href="#dashboard">Dashboard</a>
+                            <a href="../org/dashboard/">Dashboard</a>
                             <a href="../application-form/">Monitor Application Status</a>
                             <a href="#account-settings">Account Settings</a>
                             <a href="../auth/logout.php">Log Out</a>
