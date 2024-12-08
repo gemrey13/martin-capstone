@@ -20,8 +20,8 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropbtn">Programs</a>
                     <div class="dropdown-content">
-                        <a href="scholar.php" onclick="showContent('scholar')">Scholarships</a>
-                        <a href="youthprofiling.php" onclick="showContent('profiling')">Youth Profiling</a>
+                        <a href="../scholarship/" onclick="showContent('scholar')">Scholarships</a>
+                        <a href="../youth-profiling/" onclick="showContent('profiling')">Youth Profiling</a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -45,7 +45,7 @@
                                 <a href="../org/dashboard/">Dashboard</a>
                             <?php endif; ?>
 
-                            <?php if ($_SESSION['role'] !== 'admin'): ?> <!-- Hide for admin role -->
+                            <?php if ($_SESSION['role'] !== 'admin'): ?> 
                                 <a href="../application-form/">Monitor Application Status</a>
                             <?php endif; ?>
 
