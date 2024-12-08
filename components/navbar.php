@@ -12,10 +12,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                    <a class="nav-link active" aria-current="page" href="../home/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About Us</a>
+                    <a class="nav-link" href="../home/#about">About Us</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropbtn">Programs</a>
@@ -25,7 +25,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#news">News</a>
+                    <a class="nav-link" href="../home/#news">News</a>
                 </li>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
@@ -35,7 +35,7 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropbtn">
+                        <a class="nav-link dropbtn" style="cursor: pointer;">
                             <i class='bx bxs-user-circle profile-icon'></i> Profile
                         </a>
                         <div class="dropdown-content" style="font: size 13px;">

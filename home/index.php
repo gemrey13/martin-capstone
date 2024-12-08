@@ -14,7 +14,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 </p>
                 <?php if ($isLoggedIn): ?>
 
-                    <a href="applicationform.php" class="btn btn-primary" style="padding:20px;">Apply for Accreditation</a>
+                    <a href="../application-form/" class="btn btn-primary" style="padding:20px;">Apply for Accreditation</a>
                 <?php else: ?>
 
                     <a href="register-form.php" class="btn btn-primary">Get Started</a>
