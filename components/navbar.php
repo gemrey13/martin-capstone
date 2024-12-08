@@ -31,16 +31,24 @@
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#notifications">
-                            <i class='bx bxs-bell'></i> 
+                            <i class='bx bxs-bell'></i>
                         </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropbtn" style="cursor: pointer;">
                             <i class='bx bxs-user-circle profile-icon'></i> Profile
                         </a>
-                        <div class="dropdown-content" style="font: size 13px;">
-                            <a href="../org/dashboard/">Dashboard</a>
-                            <a href="../application-form/">Monitor Application Status</a>
+                        <div class="dropdown-content" style="font-size: 13px;">
+                            <?php if ($_SESSION['role'] === 'admin'): ?>
+                                <a href="../admin/dashboard/">Dashboard</a>
+                            <?php elseif ($_SESSION['role'] === 'organization'): ?>
+                                <a href="../org/dashboard/">Dashboard</a>
+                            <?php endif; ?>
+
+                            <?php if ($_SESSION['role'] !== 'admin'): ?> <!-- Hide for admin role -->
+                                <a href="../application-form/">Monitor Application Status</a>
+                            <?php endif; ?>
+
                             <a href="#account-settings">Account Settings</a>
                             <a href="../auth/logout.php">Log Out</a>
                         </div>
